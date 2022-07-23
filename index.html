@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"/>
+</head>
+<body>
+  
+    
+    <div id="mainContainer">
+      <div id="right">
+   <div id="rightOne">
+                <div id="loc">
+                    <i id="log" class="fas fa-map-marker-alt"></i>
+                    <p id="cityName">Nepal</p>
+                </div>
+                <div> <i class="fas fa-cloud-sun-rain"></i></div>
+                <div id="sel"><span id="temp"></span>&#176;</div>
+                <div id="Rightdate" class="Rightdate"> </div>
+            </div>
+            <div id="rightTop">
+                <div id="first">Humidity &nbsp :&nbsp&nbsp&nbsp<span id="humidity"></span></div>
+                <div>Pressure &nbsp :&nbsp&nbsp&nbsp<span id="pressure"></span></div>
+
+            </div>
+
+            <div id="rightTop2">
+                <div><b>💨 </b>Wind Speed &nbsp :&nbsp&nbsp&nbsp<span id="wind"></span></div>
+                <div><b>🌅 </b>Sun Rise &nbsp :&nbsp&nbsp&nbsp<span id="rise"></span></div>
+                <div><b>🌄 </b>Sun Set &nbsp :&nbsp&nbsp&nbsp<span id="set"></span></div>
+                
+            </div>
+                
+        </div>
+       
+        <div id="left">
+          <h1>WEATHER FINDING</h1>
+ <input type="text" id="city" placeholder="Enter City to know Wheather">
+.............................................................  
+...................................
+      <button id="Search" onclick="getWeather()"> Search </button> 
+            <div id="days">
+                <div>
+                    <p>Sun</p>
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <div>Max-33&#176;C</div>
+                    <div>Min-23&#176;C</div>
+                </div>
+                <div>
+                    <p>Mon</p>
+                    <i class="fas fa-bolt"></i>
+                    <div>Max-34&#176;C</div>
+                    <div>Min-23&#176;C</div>
+                </div>
+                <div>
+                    <p>Tue</p>
+                    <i class="fas fa-cloud-moon"></i>
+                    <div>Max-29&#176;C</div>
+                    <div>Min-23&#176;C</div>
+                </div>
+                <div>
+                    <p>Wed</p>
+                    <i class="fas fa-cloud"></i>
+                    <div>Max-36&#176;C</div>
+                    <div>Min-25&#176;C</div>
+                </div>
+                <div>
+                    <p>Thur</p>
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <div>Max-32&#176;C</div>
+                    <div>Min-29&#176;C</div>
+                </div>
+                <div>
+                    <p>Fri</p>
+                    <i class="fas fa-bolt"></i>
+                    <div>Max-33&#176;C</div>
+                    <div>Min-30&#176;C</div>
+                </div>
+                <div>
+                    <p>Sat</p>
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <div>Max-33&#176;C</div>
+                    <div>Min-23&#176;C</div>
+                </div>
+            </div>
+            <div id="map">
+                <iframe id="map1" src="https://maps.google.com/maps?q=noida&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+            </div>
+        </div>
+            <style>
+                * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Quicksand", sans-serif;
+        }
+        
+        html {
+          font-size: 45%;
+        }
+        
+        .container {
+          padding-bottom: 50rem;
+          width:50%;
+          height:50vh;
+          color: azure;
+          display: flex;
+          font-weight: 900px;
+          justify-content: center;
+          align-items: center;
+          font-weight: bolder;
+          margin-top: 0px;
+        }
+        
+        .calendar {
+          width: 45rem;
+          height: 52rem;
+      background-image: url("ddd.jpg");
+          box-shadow: 0 0.5rem 3rem yellow;
+          font-weight: 40000;
+        }
+        
+        .month {
+          margin-top: 0px;
+          width: 100%;
+          height: 12rem;
+        font-size: 5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          text-align: center;
+          text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+          background-color: #167e56;
+        }
+        
+        .month i {
+          font-size: 2.5rem;
+          cursor: pointer;
+        }
+        
+        .month h1 {
+          font-size: 5rem;
+          font-weight: 4000;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .month p {
+          font-size: 3rem;
+          color:blanchedalmond;
+          font-family: Arial, Helvetica, sans-serif;
+         
+        }
+        
+        .weekdays {
+          width: 100%;
+          height: 5rem;
+          padding: 0 0.4rem;
+          display: flex;
+          align-items: center;
+        }
+        
+        .weekdays div {
+          font-size: 2rem;
+          font-weight: 4000;
+         background-image: url("aaa.jpg");
+          letter-spacing: 0.1rem;
+          width: calc(44.2rem / 7);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+          height: 3rem;
+        }
+        
+        .days {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 0.2rem;
+          font-size: 9rem;
+          background-image: url("mm.jpg");
+          background-position: center;
+        }
+        
+        .days div {
+          font-size: 3rem;
+          margin: 0.3rem;
+          width: calc(40.2rem / 7);
+          height: 5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+          transition: background-color 0.2s;
+        }
+        
+        .days div:hover:not(.today) {
+          background-color: #262626;
+          border: 0.2rem solid #777;
+          cursor: pointer;
+        }
+        
+        .prev-date,
+        .next-date {
+          opacity: 0.5;
+        }
+        
+        .today {
+          background-color: #167e56;
+        }
+        
+            </style>
+           
+          </head>
+          <body>
+            <div class="container">
+              <div class="calendar">
+                <div class="month">
+                  <i class="fas fa-angle-left prev"></i>
+                  <div class="date">
+                    <h1></h1>
+                    <p></p>
+                  </div>
+                  <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="weekdays">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+                <div class="days"></div>
+              </div>
+            </div>
+        
+            <script>
+        const date = new Date();
+        
+        const renderCalendar = () => {
+          date.setDate(1);
+        
+          const monthDays = document.querySelector(".days");
+        
+          const lastDay = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0
+          ).getDate();
+        
+          const prevLastDay = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            0
+          ).getDate();
+        
+          const firstDayIndex = date.getDay();
+        
+          const lastDayIndex = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0
+          ).getDay();
+        
+          const nextDays = 7 - lastDayIndex - 1;
+        
+          const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
+        
+          document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+        
+          document.querySelector(".date p").innerHTML = new Date().toDateString();
+        
+          let days = "";
+        
+          for (let x = firstDayIndex; x > 0; x--) {
+            days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+          }
+        
+          for (let i = 1; i <= lastDay; i++) {
+            if (
+              i === new Date().getDate() &&
+              date.getMonth() === new Date().getMonth()
+            ) {
+              days += `<div class="today">${i}</div>`;
+            } else {
+              days += `<div>${i}</div>`;
+            }
+          }
+        
+          for (let j = 1; j <= nextDays; j++) {
+            days += `<div class="next-date">${j}</div>`;
+            monthDays.innerHTML = days;
+          }
+        };
+        
+        document.querySelector(".prev").addEventListener("click", () => {
+          date.setMonth(date.getMonth() - 1);
+          renderCalendar();
+        });
+        
+        document.querySelector(".next").addEventListener("click", () => {
+          date.setMonth(date.getMonth() + 1);
+          renderCalendar();
+        });
+        
+        renderCalendar();
+            </script>
+          
+    </div>  
+<a href="form/index.html">Message</a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
+</html>
